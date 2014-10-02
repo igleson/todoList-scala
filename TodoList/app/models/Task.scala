@@ -22,7 +22,7 @@ class Task() extends Model {
   var done: Boolean = false
 
   override def save() = {
-    if (""==label) throw new PersistenceException("EMPTY not allowed for column \"LABEL\"")
+    if ("" == label) throw new PersistenceException("EMPTY not allowed for column \"LABEL\"")
     super.save()
   }
 
@@ -58,7 +58,7 @@ object Task {
     retorno
   })
 
-  private def date2String(date: Date): String = {
+  def date2String(date: Date): String = {
     Option(date) match {
       case Some(date) => DATE_FORMAT.format(date)
       case None => null

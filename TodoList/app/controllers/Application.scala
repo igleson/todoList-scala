@@ -1,6 +1,7 @@
 package controllers
 
 import java.text.ParseException
+import javax.persistence.PersistenceException
 
 import models.Task
 import play.api.libs.json.Json
@@ -18,25 +19,35 @@ object Application extends Controller {
     try {
       val placeResult = request.body.validate[Task]
       placeResult.fold(
-      errors => {
-          BadRequest("ERROS")
-        },
-      task => {
-          task.save()
-          Created("/task/" + task.id)
-        }
+          errors => {
+            BadRequest("ERROR")
+          },
+          task => {
+            task.save()
+            Created("/task/" + task.id)
+          }
       )
     } catch {
       case ex: ParseException => {
         BadRequest("Date must be on format MM-DD-YYYY")
+      }case ex: PersistenceException =>{
+        BadRequest(ex.getMessage())
       }
     }
   }
 
   def getTask(id: Long) = Action {
     Option(Task.FINDER.byId(id)) match {
-      case Some(task) =>  Ok(Json.toJson(task))
+      case Some(task) => Ok(Json.toJson(task))
       case None => NotFound
     }
+  }
+
+  def list() = Action {
+    Ok(views.html.index.render())
+  }
+
+  def index() = Action {
+    Redirect(routes.Application.list())
   }
 }

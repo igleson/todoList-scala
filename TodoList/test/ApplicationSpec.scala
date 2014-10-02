@@ -193,4 +193,28 @@ class ApplicationSpec extends Specification {
       }
     }
   }
+
+  "Test interface" should {
+
+    "has a table of tasks" in new WithBrowser {
+      running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
+        for (i <- 1 until 10) {
+          val json = Json.obj(
+            "label" -> "test1",
+            "date" -> "11-11-1111",
+            "done" -> false
+          )
+
+          val createTaskRequest = FakeRequest(method = "POST",
+            uri = "/task",
+            headers = FakeHeaders(
+              Seq("Content-type" -> Seq("application/json"))
+            ),
+            body = json
+          )
+          val createTask = route(createTaskRequest)
+        }
+      }
+    }
+  }
 }

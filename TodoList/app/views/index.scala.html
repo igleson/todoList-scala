@@ -1,5 +1,26 @@
-@(message: String)
+@main("ToDo List") {
 
-@main("Welcome to Play") {
-        <a href="google.com">google</a>
+    <div ng-controller="TodoListController">
+
+        <form>
+            Label: <input type="text" ng-model="interface.label"/>
+            Done: <input type="text" ng-model="interface.done"/>
+            Date: <input type="text" ng-model="interface.date"/>
+
+            <button ng-click="functions.createTask()">Save</button>
+        </form>
+
+        <table id="tabela" ng-show="model.tasks.length">
+            <tr>
+                <th ng-click="interface.order='label';interface.reverse=!interface.reverse">Label</th>
+                <th ng-click="interface.order='done';interface.reverse=!interface.reverse">Done</th>
+                <th ng-click="interface.order='date';interface.reverse=!interface.reverse">Date</th>
+            </tr>
+            <tr ng-repeat="task in model.tasks | orderBy:interface.order:interface.reverse | filter:interface.search">
+                <td> {{task.label}} </td>
+                <td> {{task.done}} </td>
+                <td> {{task.date}} </td>
+            </tr>
+        </table>
+    </div>
 }
