@@ -1,4 +1,4 @@
 todoList-scala
 ==============
 
-Example of a todo list in scala + Play!framework 2.4
+Scala ToDo list example + play!framework 2.4
