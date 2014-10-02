@@ -22,7 +22,7 @@ class Task() extends Model {
   var done: Boolean = false
 
   override def save() = {
-    if ("" == label) throw new PersistenceException("EMPTY not allowed for column \"LABEL\"")
+    if (""==label) throw new PersistenceException("EMPTY not allowed for column \"LABEL\"")
     super.save()
   }
 

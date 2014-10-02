@@ -13,6 +13,21 @@ import scala.collection.JavaConverters._
 @RunWith(classOf[JUnitRunner])
 class ApplicationSpec extends Specification {
 
+  "Unit Tests" should {
+
+    "format date" in new WithApplication {
+      val date = new Date(123145413246l)
+
+      Task.DATE_FORMAT format date must be equalTo "11-26-1973"
+    }
+
+    "parse date" in new WithApplication {
+      val date = Task.DATE_FORMAT parse "11-26-1973"
+
+      date toString() must beMatching(".*Nov.*26.*1973.*")
+    }
+  }
+
   "Tests in fake memory DataBase" should {
 
     "do not persist task with null label" in new WithApplication {
@@ -104,7 +119,7 @@ class ApplicationSpec extends Specification {
         task1 delete()
 
         Task.FINDER findRowCount() must be equalTo 4
-        Task.FINDER.all().asScala must not contain(task1)
+        Task.FINDER.all().asScala must not contain (task1)
       }
     }
   }
