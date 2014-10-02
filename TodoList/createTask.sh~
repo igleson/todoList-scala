@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -d '{"label":'$1',"date":"10-14-2014", "done":abc}' http://localhost:8080/task
