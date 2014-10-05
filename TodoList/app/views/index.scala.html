@@ -2,13 +2,11 @@
 
     <div ng-controller="TodoListController">
 
-        <form>
-            Label: <input type="text" ng-model="interface.label"/>
-            Done: <input type="text" ng-model="interface.done"/>
-            Date: <input type="text" ng-model="interface.date"/>
+        Label: <input type="text" ng-model="interface.label"/>
+        Done: <input type="text" ng-model="interface.done"/>
+        Date: <input type="text" ng-model="interface.date"/>
 
-            <button ng-click="functions.createTask()">Save</button>
-        </form>
+        <button ng-click="functions.createTask()">save</button>
 
         <table id="tabela" ng-show="model.tasks.length">
             <tr>
