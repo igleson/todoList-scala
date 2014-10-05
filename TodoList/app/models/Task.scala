@@ -1,5 +1,7 @@
 package models
 
+import models.DateConversors._
+
 import java.util.Date
 import javax.persistence._
 import javax.validation.constraints.NotNull
