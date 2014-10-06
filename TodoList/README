@@ -1,4 +1,4 @@
-This is your new Play application
-=================================
+Example of a Todo List Manager in Scala with Play!Frameork 2.x
 
-This file will be packaged with your application, when using `activator dist`.
+To run in a linux system just use the comand ./activator "run 8080"
+8080 can be replaced by any port you want
