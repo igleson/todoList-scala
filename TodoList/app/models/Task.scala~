@@ -34,7 +34,7 @@ object Task {
   val finder = new Finder[Long, Task](classOf[Long], classOf[Task])
 
   implicit def task2json = new Writes[Task] {
-    override def writes(t: Task) = {
+    override def writes(t: Task): JsValue = {
       Json.obj(
         "id" -> t.id,
         "label" -> t.label,

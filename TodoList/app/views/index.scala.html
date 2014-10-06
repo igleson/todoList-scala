@@ -2,12 +2,6 @@
 
     <div ng-controller="TodoListController">
 
-        Label: <input type="text" ng-model="interface.label"/>
-        Done: <input type="text" ng-model="interface.done"/>
-        Date: <input type="text" ng-model="interface.date"/>
-
-        <button ng-click="functions.createTask()">save</button>
-
         <table id="tabela" ng-show="model.tasks.length">
             <tr>
                 <th ng-click="interface.order='label';interface.reverse=!interface.reverse">Label</th>

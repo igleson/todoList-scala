@@ -11,30 +11,4 @@ function TodoListController($scope, $http) {
     $scope.interface = {};
     $scope.interface.order = "label"
     $scope.interface.reverse = false;
-    $scope.interface.label = ""
-    $scope.interface.done = ""
-    $scope.interface.date = ""
-
-    $scope.functions = {}
-    $scope.functions.createTask = function () {
-        alert("entrando")
-
-        $http({
-                url: "/task",
-                method: "POST",
-                data: '{"label":"' + $scope.interface.label + '"," date": "' + $scope.interface.date + '","done":"' + $scope.interface.done + '"}',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        )
-            .sucess(function (data, status, headers, config)  {
-                alert("funcionou")
-            })
-            .error(function (data, status, headers, config) {
-                alert("n funcionou")
-            });
-
-
-    }
 }

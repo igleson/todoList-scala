@@ -64,7 +64,7 @@ class ApplicationSpec extends Specification {
         task.save
 
         task.id must not be null
-        Task.finder.all.size must be equals 1
+        Task.finder.findRowCount must be equals 1
       }
     }
 
