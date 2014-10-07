@@ -6,7 +6,6 @@
 GET         /                    controllers.Application.index
 GET         /list                controllers.Application.list
 
-
 # Task
 GET         /task                controllers.Application.allTasks
 GET         /task/:id            controllers.Application.getTask(id: Long)

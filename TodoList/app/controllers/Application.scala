@@ -34,7 +34,7 @@ object Application extends Controller {
         BadRequest(ex.getMessage())
       }
     }
-   }
+  }
 
   def getTask(id: Long) = Action {
     Option(Task.finder.byId(id)) match {
